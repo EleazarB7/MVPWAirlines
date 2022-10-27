@@ -33,7 +33,7 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
        }
        
        
-       address public tokenAddress;
+       address public tokenAddress; // Address of the token
 
        mapping(uint256 => Plane) public planes;
        mapping(uint256 => Flight) public flights;
@@ -43,10 +43,11 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
              tokenAddress = _tokenAddress;
        }
 
-       // events
+       // Event signifying that a new plane is registered 
        event PlaneRegistered(uint256 planeID, uint256 ecoClassAvaliable, uint256 firstClassSeatsAvaliable);
-       event PlaneOnHold(uint256 planeID);
-       event PlaneOffHold(uint256 planeID);
+       event PlaneOnHold(uint256 planeID); // Event signifying that a plane is put on hold
+       event PlaneOffHold(uint256 planeID); // Event signifying that a plane is put off hold
+       // Event signifying that a new flight is announced
        event FlightAnnounced(
              uint256 indexed planeID,
              uint256 indexed flightID,
@@ -56,20 +57,22 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
              uint256 ecoClassSeatsAvaliable,
              uint256 firstClassSeatsAvaliable,
              string destination);
+       // Event signifying that tickets have been bought     
        event TicketsBought(uint256 indexed flightID, address indexed buyer, uint256 numberOfEcoClassSeats, uint256 numberOfFirstClassSeats);
+       // Event signifying that thickets have been canceled
        event TicketsCanceled(uint256 indexed flightID, address indexed buyer, uint256 numberOfEcoClassSeats, uint256 numberOfFirstClassSeats);
             
-
-       error PlaneIDValid(uint256 planeID);
-       error FlightIDValid(uint256 flightID);
-       error InvalidDepartureTime(uint256 departureTime);
-       error PlaneIsOnHold();
-       error PlaneNotFound();
-       error FlightNotFound();
-       error TicketsNotChosen();
-       error ToManyTicketsChosen();
-       error AllowanceNotValid();
-       error NotEnoughBalance();
+        
+       error PlaneIDValid(uint256 planeID); // Error signifying that the plane id is valid
+       error FlightIDValid(uint256 flightID); // Error signifying that the flight id is valid
+       error InvalidDepartureTime(uint256 departureTime); // Error signifying that the departure time si invalid
+       error PlaneIsOnHold(); // Error signifying that a plane is on hold
+       error PlaneNotFound(); // Error signifying that a plane is not found
+       error FlightNotFound(); // Error signifying that a flight is not found
+       error TicketsNotChosen(); // Error signifying that tickets have not been chosen
+       error ToManyTicketsChosen(); // Error signifying that too many tickets have been chosen
+       error AllowanceNotValid(); // Error signifying that allowance is not valid
+       error NotEnoughBalance(); // Error signifying that balance is low
 
        // With this function we are registering a new plane
        function registerNewPlane(uint256 _planeID, uint256 _ecoClassSeats, uint256 _firstClassSeats) external onlyOwner {
@@ -141,7 +144,7 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
 
           );
        }
-      // With this function we are reserving tickets 
+      // With this function a person is reserving tickets for the flight
        function reserveTickets(uint256 _flightID, uint256 _numberOfEcoClassSeats, uint256 _numberOfFirstClassSeats) external {
              if (_numberOfEcoClassSeats == 0 && _numberOfFirstClassSeats == 0) {
                    revert TicketsNotChosen();
@@ -175,7 +178,7 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
 
        }
        
-       // With this function we are cancelling reserved tickets
+       // With this function a person is cancelling tickets that he has reserved 
        function cancelTickets(uint256 _flightID, uint256 _numberOfEcoClassSeats, uint256 _numberOfFirstClassSeats) external{
              Flight storage flight = flights[_flightID];
              Reservation storage reservation = flight.reservations[msg.sender];
