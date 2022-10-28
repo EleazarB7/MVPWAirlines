@@ -178,7 +178,7 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
 
        }
        
-       // With this function a person is cancelling tickets that he has reserved 
+       // With this function a person is cancelling his tickets that he reserved and getting a refund sum based on when he canceld the tickets
        function cancelTickets(uint256 _flightID, uint256 _numberOfEcoClassSeats, uint256 _numberOfFirstClassSeats) external{
              Flight storage flight = flights[_flightID];
              Reservation storage reservation = flight.reservations[msg.sender];
