@@ -1,6 +1,6 @@
 # MVPWAirlines Solidity Project
 
-This Solidity project implements a basic airline reservation system on the Ethereum blockchain. It utilizes smart contracts to manage planes, flights, and ticket reservations. The project is written in Solidity version 0.8.7 and utilizes the OpenZeppelin contracts library.
+This Solidity project implements a basic airline reservation system on the Ethereum blockchain. It utilizes smart contracts to manage planes, flights, and ticket reservations. The project is written in Solidity and utilizes the OpenZeppelin contracts library.
 
 ## Contracts
 
