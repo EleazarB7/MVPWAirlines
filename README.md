@@ -17,7 +17,7 @@ The main contract that manages the airline system. It includes functionality for
 
 ### Prerequisites
 
-- Solidity Compiler 0.8.7
+- OpenZeppelin contracts
 - Ethereum Development Environment
 
 ### Installation
