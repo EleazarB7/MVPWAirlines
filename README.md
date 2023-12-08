@@ -13,8 +13,6 @@ The main contract that manages the airline system. It includes functionality for
 - [OpenZeppelin Ownable2Step](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/a1948250ab8c441f6d327a65754cb20d2b1b4554/contracts/access/Ownable2Step.sol)
 - [OpenZeppelin IERC20](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/IERC20.sol)
 
-## Getting Started
-
 ### Prerequisites
 
 - OpenZeppelin contracts
@@ -25,5 +23,5 @@ The main contract that manages the airline system. It includes functionality for
 1. Clone the repository:
 
    ```bash
-   git clone [repository_url]
+   git clone [https://github.com/LazarB7/Solidity-bootcamp-MVPWAirlines]
 
